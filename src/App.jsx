@@ -10,12 +10,7 @@ function App() {
   return (
     <>
     <ProfileCardWrapper data = {people} columnNumber={3}></ProfileCardWrapper>
-      {/* {people.map(person => <ProfileCard 
-          name = {person.name} 
-          email = {person.email} 
-          birthDate = {person.birthDate} 
-          phone = {person.phone}
-          />)} */}
+
     </>
   )
 }

@@ -1,14 +1,15 @@
 import ProfileCard from "./ProfileCard";
 
 function ProfileCardWrapper({ data, columnNumber }) {
+    let size = 1 / columnNumber * 100;
+    console.log(size)
   return (
-    <div style={{display: "flex"}}>
+    <div className="d-flex flex-wrap">
       {data.map((el, index) => {
         return (
-          <>
+          <div style={{flexBasis: `${size}%`}}>
             <ProfileCard key={index} profile={el} />
-            {/* {index % columnNumber ? "" : ""} */}
-          </>
+          </div>
         );
       })}
     </div>
