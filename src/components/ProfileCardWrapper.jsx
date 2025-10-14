@@ -2,7 +2,6 @@ import ProfileCard from "./ProfileCard";
 
 function ProfileCardWrapper({ data, columnNumber }) {
     let size = 1 / columnNumber * 100;
-    console.log(size)
   return (
     <div className="d-flex flex-wrap">
       {data.map((el, index) => {
