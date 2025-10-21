@@ -8,20 +8,26 @@ function ProfileCard2({ profile, dispatch }) {
       <div>
         <RatingBar rating={profile.rating}></RatingBar>
 
-        <Button>Edit</Button>
-        <Button onClick={() => dispatch({ type: "check", id: profile.id })}>
+        <Button className="m-1">Edit</Button>
+        <Button
+          className="m-1"
+          onClick={() => dispatch({ type: "check", id: profile.id })}
+        >
           Check
         </Button>
 
         <Button
-          className="btn-danger"
+          className="btn-danger m-1"
           onClick={() => {
             dispatch({ type: "delete", id: profile.id });
           }}
         >
           Delete
         </Button>
-        <Button onClick={() => dispatch({ type: "rate", id: profile.id })}>
+        <Button
+          className="m-1"
+          onClick={() => dispatch({ type: "rate", id: profile.id })}
+        >
           Rate
         </Button>
         {profile.checked && "✔"}
