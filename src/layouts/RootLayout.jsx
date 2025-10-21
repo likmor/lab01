@@ -4,11 +4,13 @@ import { Outlet } from "react-router";
 
 function RootLayout() {
   return (
-    <>
+    <div className="d-flex flex-column flex-grow">
       <NavBarMenuApp />
-      <Outlet />
+      <div className="flex-grow">
+        <Outlet />
+      </div>
       <FooterApp />
-    </>
+    </div>
   );
 }
 
