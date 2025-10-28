@@ -1,7 +1,7 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useReducer } from "react";
-import AppReducer from "../data/AppReducer";
+import { useContext } from "react";
+import AppContext from "../data/AppContext";
 
 function chunkArray(arr, chunkSize) {
   const chunks = [];
@@ -10,8 +10,10 @@ function chunkArray(arr, chunkSize) {
   }
   return chunks;
 }
-function MyContainer({ El, data }) {
-  const [items, dispatch] = useReducer(AppReducer, data);
+function MyContainer({ El }) {
+  const context = useContext(AppContext);
+  const items = context.items;
+  const dispatch = context.dispatch;
   const rows = chunkArray(items, 1);
   return (
     <div>
@@ -19,7 +21,7 @@ function MyContainer({ El, data }) {
         <Row key={index}>
           {pair.map((person) => (
             <Col key={person.id}>
-              <El  {...person} dispatch={dispatch} />
+              <El {...person} dispatch={dispatch} />
             </Col>
           ))}
         </Row>

@@ -1,8 +1,12 @@
 import ProfileCard from "../components/ProfileCard";
-import { people } from "../data/module-data";
 import { useParams } from "react-router";
+import { useContext } from "react";
+import AppContext from "../data/AppContext";
 
 function Lab02() {
+  const context = useContext(AppContext);
+  const people = context.items;
+  
   const { id } = useParams();
   const person = people.filter((el) => el.id == id)[0];
   if (id == null) {

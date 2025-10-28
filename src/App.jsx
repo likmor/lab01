@@ -5,21 +5,35 @@ import { Routes, Route } from "react-router";
 import Lab01 from "./pages/Lab01";
 import Lab02 from "./pages/Lab02";
 import Lab03 from "./pages/Lab03";
+import Lab04 from "./pages/Lab04";
+import Lab04Add from "./pages/Lab04Add";
+import Lab04Edit from "./pages/Lab04Edit";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import AppReducer from "./data/AppReducer";
+import AppContext from "./data/AppContext";
+import { useReducer } from "react";
+import { people as data } from "./data/module-data";
+
 
 function App() {
+  const [state, appDispatch] = useReducer(AppReducer, data);
   return (
-    <Routes>
-      <Route element={<RootLayout />}>
-        <Route path="home" element={<Home></Home>}></Route>
-        <Route path="lab01" element={<Lab01></Lab01>}></Route>
-        <Route path="lab02" element={<Lab02 />} />
-        <Route path="lab02/:id" element={<Lab02 />} />
-        <Route path="lab03" element={<Lab03 />} />
-        <Route path="/*" element={<NotFound></NotFound>}></Route>
-      </Route>
-    </Routes>
+    <AppContext.Provider value={{ items: state, dispatch: appDispatch }}>
+      <Routes>
+        <Route element={<RootLayout />}>
+          <Route path="home" element={<Home></Home>}></Route>
+          <Route path="lab01" element={<Lab01></Lab01>}></Route>
+          <Route path="lab02" element={<Lab02 />} />
+          <Route path="lab02/:id" element={<Lab02 />} />
+          <Route path="lab03" element={<Lab03 />} />
+          <Route path="lab04" element={<Lab04 />} />
+          <Route path="lab04/add" element={<Lab04Add />} />
+          <Route path="lab04/edit/:id" element={<Lab04Edit />} />
+          <Route path="/*" element={<NotFound></NotFound>}></Route>
+        </Route>
+      </Routes>
+    </AppContext.Provider>
   );
 }
 
