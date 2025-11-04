@@ -25,6 +25,9 @@ function NavBarMenuApp() {
             <Nav.Item className="mr-3">
               <NavLink to="lab04/add">Laboratorium 4</NavLink>
             </Nav.Item>
+            <Nav.Item className="mr-3">
+              <NavLink to="lab05">Laboratorium 5</NavLink>
+            </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>

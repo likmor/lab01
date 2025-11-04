@@ -6,20 +6,16 @@ import Lab01 from "./pages/Lab01";
 import Lab02 from "./pages/Lab02";
 import Lab03 from "./pages/Lab03";
 import Lab04 from "./pages/Lab04";
+import Lab05 from "./pages/Lab05";
 import Lab04Add from "./pages/Lab04Add";
 import Lab04Edit from "./pages/Lab04Edit";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-import AppReducer from "./data/AppReducer";
-import AppContext from "./data/AppContext";
-import { useReducer } from "react";
-import { people as data } from "./data/module-data";
-
+import AppProvider from "./components/AppProvider";
 
 function App() {
-  const [state, appDispatch] = useReducer(AppReducer, data);
   return (
-    <AppContext.Provider value={{ items: state, dispatch: appDispatch }}>
+    <AppProvider>
       <Routes>
         <Route element={<RootLayout />}>
           <Route path="home" element={<Home></Home>}></Route>
@@ -30,10 +26,11 @@ function App() {
           <Route path="lab04" element={<Lab04 />} />
           <Route path="lab04/add" element={<Lab04Add />} />
           <Route path="lab04/edit/:id" element={<Lab04Edit />} />
+          <Route path="lab05" element={<Lab05 />} />
           <Route path="/*" element={<NotFound></NotFound>}></Route>
         </Route>
       </Routes>
-    </AppContext.Provider>
+    </AppProvider>
   );
 }
 

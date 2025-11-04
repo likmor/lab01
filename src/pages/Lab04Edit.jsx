@@ -2,7 +2,8 @@ import { Button, Container, Form, FormControl } from "react-bootstrap";
 import { useState, useContext, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-import AppContext from "../data/AppContext";
+import useData from "../components/useData";
+import useDispatch from "../components/useDispatch";
 
 const confirmPasswordField = "confirmPassword";
 const passwordField = "password";
@@ -12,7 +13,8 @@ function Lab04Add() {
   const [isSending, setSending] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
-  const { items, dispatch } = useContext(AppContext);
+  const items = useData();
+  const dispatch = useDispatch();
   // React Hook Form setup
   const {
     register,
@@ -26,7 +28,6 @@ function Lab04Add() {
     const profile = items.find((p) => p.id === parseInt(id));
     if (profile) {
       Object.keys(profile).forEach((key) => {
-        console.log(key)
         setValue(key, profile[key]);
       });
     }
@@ -34,9 +35,10 @@ function Lab04Add() {
 
   const onSubmit = (data) => {
     setSending(true);
-    console.log(data)
+    console.log(data);
     dispatch({ type: "edit", profile: { ...data, id: parseInt(id) } });
     setSending(false);
+    navigate('/lab03')
   };
 
   return (
@@ -117,39 +119,6 @@ function Lab04Add() {
               type="date"
               {...register("birthDate", { required: true })}
             />
-          </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor={passwordField}>Password</Form.Label>
-            <FormControl
-              required
-              id={passwordField}
-              type="password"
-              minLength={3}
-              placeholder="Enter your password"
-              {...register(passwordField, { required: true, minLength: 3 })}
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor={confirmPasswordField}>
-              Confirm password
-            </Form.Label>
-            <FormControl
-              required
-              id={confirmPasswordField}
-              type="password"
-              placeholder="Re-enter your password"
-              {...register(confirmPasswordField, {
-                validate: (value) =>
-                  value === watch(passwordField) || "Passwords do not match",
-              })}
-            />
-            {errors[confirmPasswordField] && (
-              <Form.Text className="text-danger">
-                {errors[confirmPasswordField].message}
-              </Form.Text>
-            )}
           </Form.Group>
 
           <div className="d-grid">

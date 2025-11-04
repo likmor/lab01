@@ -1,11 +1,9 @@
 import ProfileCardWrapper from "../components/ProfileCardWrapper";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useContext } from "react";
-import AppContext from "../data/AppContext";
+import useData from "../components/useData";
 
 function Lab01() {
-  const context = useContext(AppContext);
-  const items = context.items;
+  const items = useData();
   return (
     <>
       <ProfileCardWrapper data={items} columnNumber={3}></ProfileCardWrapper>

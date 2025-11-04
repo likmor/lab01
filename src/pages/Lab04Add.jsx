@@ -1,7 +1,7 @@
 import { Button, Container, Form, FormControl } from "react-bootstrap";
 import { useState } from "react";
-import { useContext } from "react";
-import AppContext from "../data/AppContext";
+import useData from "../components/useData";
+import useDispatch from "../components/useDispatch";
 
 const confirmPasswordField = "confirmPassword";
 const passwordField = "password";
@@ -11,8 +11,8 @@ function Lab04Add() {
   const [errors, setErrors] = useState([]); // stan kominikatów błędów
   const [isSendig, setSending] = useState(false); // stan sygnalizujący wysyłanie
 
-  const context = useContext(AppContext);
-  const dispatch = context.dispatch;
+  const context = useData();
+  const dispatch = useDispatch();
 
   const onSubmitFunction = async (e) => {
     e.preventDefault(); //blokada wysyłania żądania
@@ -40,6 +40,8 @@ function Lab04Add() {
     }
     //kod wysłania akcji do funkcji redukującej
     dispatch({ type: "add", profile: { name, email, phone, url, birthDate } });
+
+    navigate('/lab03')
   };
 
   return (

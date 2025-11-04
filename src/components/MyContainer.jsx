@@ -1,7 +1,7 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useContext } from "react";
-import AppContext from "../data/AppContext";
+import useData from "./useData";
+import useDispatch from "./useDispatch";
 
 function chunkArray(arr, chunkSize) {
   const chunks = [];
@@ -11,9 +11,8 @@ function chunkArray(arr, chunkSize) {
   return chunks;
 }
 function MyContainer({ El }) {
-  const context = useContext(AppContext);
-  const items = context.items;
-  const dispatch = context.dispatch;
+  const items = useData();
+  const dispatch = useDispatch();
   const rows = chunkArray(items, 1);
   return (
     <div>
