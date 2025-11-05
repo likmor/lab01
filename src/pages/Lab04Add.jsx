@@ -2,12 +2,14 @@ import { Button, Container, Form, FormControl } from "react-bootstrap";
 import { useState } from "react";
 import useData from "../components/useData";
 import useDispatch from "../components/useDispatch";
+import { useNavigate } from "react-router";
 
 const confirmPasswordField = "confirmPassword";
 const passwordField = "password";
 const emailField = "email";
 
 function Lab04Add() {
+  const navigate = useNavigate();
   const [errors, setErrors] = useState([]); // stan kominikatów błędów
   const [isSendig, setSending] = useState(false); // stan sygnalizujący wysyłanie
 
@@ -45,7 +47,7 @@ function Lab04Add() {
   };
 
   return (
-    <>
+    <div>
       <h1>Register</h1>
 
       <div className="text-danger">
@@ -161,7 +163,7 @@ function Lab04Add() {
           </Button>
         </div>
       </Form>
-    </>
+    </div>
   );
 }
 

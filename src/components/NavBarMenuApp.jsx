@@ -1,3 +1,4 @@
+import { NavbarText } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -5,29 +6,32 @@ import { NavLink } from "react-router";
 
 function NavBarMenuApp() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar bg="light" variant="light" expand="lg">
       <Container>
-        <NavLink className="mr-5" to="home">
-          Home
-        </NavLink>
+        <Navbar.Brand as={NavLink} to="/home">
+          Frontend-lab
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Item className="mr-3">
-              <NavLink to="lab01">Laboratorium 1</NavLink>
-            </Nav.Item>
-            <Nav.Item className="mr-3">
-              <NavLink to="lab02">Laboratorium 2</NavLink>
-            </Nav.Item>
-            <Nav.Item className="mr-3">
-              <NavLink to="lab03">Laboratorium 3</NavLink>
-            </Nav.Item>
-            <Nav.Item className="mr-3">
-              <NavLink to="lab04/add">Laboratorium 4</NavLink>
-            </Nav.Item>
-            <Nav.Item className="mr-3">
-              <NavLink to="lab05">Laboratorium 5</NavLink>
-            </Nav.Item>
+            <Nav.Link as={NavLink} to="/home">
+              Home
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/lab01">
+              Lab01
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/lab02">
+              Lab02
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/lab03">
+              Lab03
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/lab04/Add">
+              Lab04
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/lab05">
+              Lab05
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -35,14 +35,13 @@ function Lab04Add() {
 
   const onSubmit = (data) => {
     setSending(true);
-    console.log(data);
     dispatch({ type: "edit", profile: { ...data, id: parseInt(id) } });
     setSending(false);
     navigate('/lab03')
   };
 
   return (
-    <>
+    <div>
       <h1>Edit</h1>
 
       <Container>
@@ -103,11 +102,10 @@ function Lab04Add() {
             <FormControl
               minLength={6}
               maxLength={100}
-              required
               id="url"
               type="text"
               placeholder="Enter URL"
-              {...register("url", { required: true })}
+              {...register("url", { required: false })}
             />
           </Form.Group>
 
@@ -133,7 +131,7 @@ function Lab04Add() {
           </div>
         </Form>
       </Container>
-    </>
+    </div>
   );
 }
 

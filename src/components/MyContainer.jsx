@@ -15,7 +15,7 @@ function MyContainer({ El }) {
   const dispatch = useDispatch();
   const rows = chunkArray(items, 1);
   return (
-    <div>
+    <div style={{display: "flex", alignItems: "stretch", flexDirection: "column", width: "600px"}}>
       {rows.map((pair, index) => (
         <Row key={index}>
           {pair.map((person) => (

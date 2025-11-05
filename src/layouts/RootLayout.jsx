@@ -4,9 +4,9 @@ import { Outlet } from "react-router";
 
 function RootLayout() {
   return (
-    <div className="d-flex flex-column flex-grow">
+    <div style={{ display: "flex", justifyContent: "space-between", flexDirection: "column", height: "100%", alignContent: "center" }}>
       <NavBarMenuApp />
-      <div className="flex-grow">
+      <div style={{display: "flex", flex: 1, justifyContent: "center"}}>
         <Outlet />
       </div>
       <FooterApp />

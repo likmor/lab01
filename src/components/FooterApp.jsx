@@ -8,9 +8,7 @@ function FooterApp() {
           <img
             alt=""
             src="/src/assets/wsei.png"
-            width="130"
-            height="130"
-            className="d-inline-block align-top"
+            style={{width: "100px"}}
           />
           <b>daniil.hoiman@microsoft.wsei.edu.pl</b>
         </Row>

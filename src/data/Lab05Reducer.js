@@ -42,7 +42,7 @@ export default function Lab05Reducer(state, action) {
       return sorted;
     }
     case "init":
-      return action.payload;
+      return action.init;
       
     default:
       return state;

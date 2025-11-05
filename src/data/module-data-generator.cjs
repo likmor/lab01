@@ -17,13 +17,15 @@ fs.readFile("src/data/names.txt", "utf8", (err, data) => {
     .split("\n")
     .map((s) => s.trim())
     .filter((n) => n.length != 0);
-  console.log(names);
   let content = "export const people = [";
   for (let i = 0; i < count; i++) {
     let name = names[~~((Math.random() * names.length) / 1)];
     let birthDate = 1995 + Math.floor(Math.random() * 10);
     let birthMonth = 1 + + Math.floor(Math.random() * 11)
+    if (birthMonth < 10) birthMonth = `0${birthMonth}`;
     let birthDay = 1 + + Math.floor(Math.random() * 28)
+    if (birthDay < 10) birthDay = `0${birthDay}`;
+
     let email = `${name.toLocaleLowerCase()}${i}@gmail.com`;
     let phone = `${Math.floor(Math.random() * 999)}-${Math.floor(
       Math.random() * 999
