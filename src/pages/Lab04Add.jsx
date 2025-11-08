@@ -43,7 +43,7 @@ function Lab04Add() {
     //kod wysłania akcji do funkcji redukującej
     dispatch({ type: "add", profile: { name, email, phone, url, birthDate } });
 
-    navigate('/lab03')
+    navigate("/lab03");
   };
 
   return (
@@ -134,7 +134,7 @@ function Lab04Add() {
             placeholder="Enter your password"
           />
           <Form.Text className="text-muted">
-            Input mininum 6 characters, one digit and one special character
+            Input mininum 2 characters
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3">

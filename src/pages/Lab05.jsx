@@ -1,35 +1,11 @@
-import { Table, Dropdown, DropdownButton, Accordion, Button } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import useFetch from "../components/useFetch";
 import { useReducer, useEffect } from "react";
 import Lab05Reducer from "../data/Lab05Reducer";
 import { useNavigate } from "react-router";
+import { PostAccordion } from "../components/PostAccordion";
+import { TableDropdown } from "../components/TableDropdown";
 
-function PostAccordion({ name, body }) {
-  return (
-    <Accordion >
-      <Accordion.Item style={{ backgroundColor: "transparent" }} eventKey="0">
-        <Accordion.Header >{name}</Accordion.Header>
-        <Accordion.Body>{body}</Accordion.Body>
-      </Accordion.Item>
-    </Accordion>
-  );
-}
-function TableDropdown({ name, action, dispatch }) {
-  return (
-    <DropdownButton title={name} id={name}>
-      <Dropdown.Item onClick={() => dispatch({ type: action, sort: "asc" })}>
-        Ascending order
-      </Dropdown.Item>
-      <Dropdown.Item onClick={() => dispatch({ type: action, sort: "desc" })}>
-        Descending order
-      </Dropdown.Item>
-      <Dropdown.Item onClick={() => dispatch({ type: action, sort: "nat" })}>
-        Natural order
-      </Dropdown.Item>
-    </DropdownButton>
-
-  );
-}
 function Lab05() {
   const navigate = useNavigate();
   const [posts] = useFetch("https://jsonplaceholder.typicode.com/posts");
@@ -50,7 +26,7 @@ function Lab05() {
     }
   }, [posts, users, comments]);
   if (state.length == 0) {
-    return <h3>Loading...</h3>
+    return <h3>Loading...</h3>;
   }
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
@@ -83,7 +59,14 @@ function Lab05() {
         <tbody>
           {state.map((el) => (
             <tr key={el.post?.id}>
-              <td><Button variant="link" onClick={() => navigate(`/lab05/users/${el.user?.id}`)}>{el.user?.name}</Button></td>
+              <td>
+                <Button
+                  variant="link"
+                  onClick={() => navigate(`/lab05/users/${el.user?.id}`)}
+                >
+                  {el.user?.name}
+                </Button>
+              </td>
               <td>
                 {el.post ? (
                   <PostAccordion
@@ -92,13 +75,20 @@ function Lab05() {
                   ></PostAccordion>
                 ) : null}
               </td>
-              <td><Button variant="link" onClick={() => navigate(`/lab05/posts/${el.post?.id}/comments`)}>{el.comments?.length}</Button></td>
-              
+              <td>
+                <Button
+                  variant="link"
+                  onClick={() =>
+                    navigate(`/lab05/posts/${el.post?.id}/comments`)
+                  }
+                >
+                  {el.comments?.length}
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>
       </Table>
-
     </div>
   );
 }
